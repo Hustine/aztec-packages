@@ -10,7 +10,6 @@ mod pedersen;
 mod poseidon2;
 mod schnorr;
 
-use ark_ec::AffineRepr;
 pub use embedded_curve_ops::{embedded_curve_add, multi_scalar_mul};
 pub use generator::generators::derive_generators;
 pub use poseidon2::{
