@@ -81,9 +81,6 @@ pub fn pedersen_hash<let N: u32>(input: [Field; N]) -> Field
     pedersen_hash_with_separator_noir(input, 0)
 }
 
-#[foreign(pedersen_hash)]
-fn __pedersen_hash_with_separator<let N: u32>(input: [Field; N], separator: u32) -> Field {}
-
 #[foreign(pedersen_commitment)]
 fn __pedersen_commitment_with_separator<let N: u32>(input: [Field; N], separator: u32) -> [Field; 2] {}
 

@@ -246,22 +246,6 @@ pub(crate) fn evaluate_black_box<F: AcirField, Solver: BlackBoxFunctionSolver<F>
             );
             Ok(())
         }
-        BlackBoxOp::PedersenHash { inputs, domain_separator, output } => {
-            let inputs: Vec<F> = read_heap_vector(memory, inputs)
-                .iter()
-                .map(|x| *x.extract_field().unwrap())
-                .collect();
-            let domain_separator: u32 =
-                memory.read(*domain_separator).try_into().map_err(|_| {
-                    BlackBoxResolutionError::Failed(
-                        BlackBoxFunc::PedersenCommitment,
-                        "Invalid separator length".to_string(),
-                    )
-                })?;
-            let hash = solver.pedersen_hash(&inputs, domain_separator)?;
-            memory.write(*output, MemoryValue::new_field(hash));
-            Ok(())
-        }
         BlackBoxOp::BigIntAdd { lhs, rhs, output } => {
             let lhs = memory.read(*lhs).try_into().unwrap();
             let rhs = memory.read(*rhs).try_into().unwrap();
@@ -464,6 +448,5 @@ fn black_box_function_from_op(op: &BlackBoxOp) -> BlackBoxFunc {
         BlackBoxOp::Sha256Compression { .. } => BlackBoxFunc::Sha256Compression,
         BlackBoxOp::ToRadix { .. } => unreachable!("ToRadix is not an ACIR BlackBoxFunc"),
         BlackBoxOp::PedersenCommitment { .. } => BlackBoxFunc::PedersenCommitment,
-        BlackBoxOp::PedersenHash { .. } => BlackBoxFunc::PedersenHash,
     }
 }
