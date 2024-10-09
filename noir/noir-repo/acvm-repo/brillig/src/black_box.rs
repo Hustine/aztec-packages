@@ -56,12 +56,6 @@ pub enum BlackBoxOp {
         signature: HeapVector,
         result: MemoryAddress,
     },
-    /// Will be deprecated
-    PedersenCommitment {
-        inputs: HeapVector,
-        domain_separator: MemoryAddress,
-        output: HeapArray,
-    },
     /// Performs multi scalar multiplication over the embedded curve.
     MultiScalarMul {
         points: HeapVector,
