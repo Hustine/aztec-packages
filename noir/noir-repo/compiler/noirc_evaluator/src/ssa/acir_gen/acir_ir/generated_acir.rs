@@ -284,9 +284,6 @@ impl<F: AcirField> GeneratedAcir<F> {
                 input2: Box::new([inputs[3][0], inputs[4][0], inputs[5][0]]),
                 outputs: (outputs[0], outputs[1], outputs[2]),
             },
-            BlackBoxFunc::Keccak256 => {
-                unreachable!("unexpected BlackBox {}", func_name.to_string())
-            }
             BlackBoxFunc::Keccakf1600 => BlackBoxFuncCall::Keccakf1600 {
                 inputs: inputs[0]
                     .clone()
@@ -634,7 +631,6 @@ fn black_box_func_expected_input_size(name: BlackBoxFunc) -> Option<usize> {
         // All of the hash/cipher methods will take in a
         // variable number of inputs.
         BlackBoxFunc::AES128Encrypt
-        | BlackBoxFunc::Keccak256
         | BlackBoxFunc::Blake2s
         | BlackBoxFunc::Blake3 => None,
 
@@ -684,7 +680,7 @@ fn black_box_expected_output_size(name: BlackBoxFunc) -> Option<usize> {
         BlackBoxFunc::AND | BlackBoxFunc::XOR => Some(1),
 
         // 32 byte hash algorithms
-        BlackBoxFunc::Keccak256 | BlackBoxFunc::Blake2s | BlackBoxFunc::Blake3 => Some(32),
+        BlackBoxFunc::Blake2s | BlackBoxFunc::Blake3 => Some(32),
 
         BlackBoxFunc::Keccakf1600 => Some(25),
         // The permutation returns a fixed number of outputs, equals to the inputs length which depends on the proving system implementation.

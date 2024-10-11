@@ -46,7 +46,6 @@ struct AcirFormatOriginalOpcodeIndices {
     std::vector<size_t> ecdsa_r1_constraints;
     std::vector<size_t> blake2s_constraints;
     std::vector<size_t> blake3_constraints;
-    std::vector<size_t> keccak_constraints;
     std::vector<size_t> keccak_permutations;
     std::vector<size_t> poseidon2_constraints;
     std::vector<size_t> multi_scalar_mul_constraints;
@@ -92,7 +91,6 @@ struct AcirFormat {
     std::vector<EcdsaSecp256r1Constraint> ecdsa_r1_constraints;
     std::vector<Blake2sConstraint> blake2s_constraints;
     std::vector<Blake3Constraint> blake3_constraints;
-    std::vector<KeccakConstraint> keccak_constraints;
     std::vector<Keccakf1600> keccak_permutations;
     std::vector<Poseidon2Constraint> poseidon2_constraints;
     std::vector<MultiScalarMul> multi_scalar_mul_constraints;
@@ -142,7 +140,6 @@ struct AcirFormat {
                    ecdsa_r1_constraints,
                    blake2s_constraints,
                    blake3_constraints,
-                   keccak_constraints,
                    keccak_permutations,
                    poseidon2_constraints,
                    multi_scalar_mul_constraints,
