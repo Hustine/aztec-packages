@@ -630,9 +630,7 @@ fn black_box_func_expected_input_size(name: BlackBoxFunc) -> Option<usize> {
 
         // All of the hash/cipher methods will take in a
         // variable number of inputs.
-        BlackBoxFunc::AES128Encrypt
-        | BlackBoxFunc::Blake2s
-        | BlackBoxFunc::Blake3 => None,
+        BlackBoxFunc::AES128Encrypt | BlackBoxFunc::Blake2s | BlackBoxFunc::Blake3 => None,
 
         BlackBoxFunc::Keccakf1600 => Some(25),
         // The permutation takes a fixed number of inputs, but the inputs length depends on the proving system implementation.
