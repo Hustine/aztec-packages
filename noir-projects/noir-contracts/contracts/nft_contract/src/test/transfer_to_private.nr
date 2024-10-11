@@ -57,7 +57,7 @@ unconstrained fn transfer_to_private_external_orchestration() {
 }
 
 #[test(should_fail_with="transfer not prepared")]
-unconstrained fn transfer_to_private_to_self_transfer_not_prepared() {
+unconstrained fn transfer_to_private_transfer_not_prepared() {
     // Setup without account contracts. We are not using authwits here, so dummy accounts are enough
     let (env, nft_contract_address, _, _, token_id) = utils::setup_and_mint(/* with_account_contracts */ false);
 
