@@ -43,7 +43,7 @@ pub(super) fn simplify_ec_add(
 
             let result_x = dfg.make_constant(result_x, Type::field());
             let result_y = dfg.make_constant(result_y, Type::field());
-            let result_is_infinity = dfg.make_constant(result_is_infinity, Type::bool());
+            let result_is_infinity = dfg.make_constant(result_is_infinity, Type::field());
 
             let typ = Type::Array(Arc::new(vec![Type::field()]), 3);
             let result_array =
