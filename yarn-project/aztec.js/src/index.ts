@@ -52,6 +52,7 @@ export {
   computeInnerAuthWitHashFromAction,
   computeInnerAuthWitHash,
   generatePublicKey,
+  toString,
   waitForAccountSynch,
   waitForPXE,
 } from './utils/index.js';
