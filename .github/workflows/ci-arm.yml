@@ -1,8 +1,10 @@
-name: CI (ARM)
+ name: CI (ARM)
 on:
   push:
     branches:
       - master
+
+      
       - '*/*arm-build'
   workflow_dispatch:
     inputs: {}
